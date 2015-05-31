@@ -1,7 +1,8 @@
 'use strict'
 
 var React = require('react-native'),
-  Tab = require('./components/tab.js')
+  Tab = require('./components/tab.js'),
+  Dropdown = require('./components/dropdown.js')
 
 var {
   StyleSheet,
@@ -11,8 +12,8 @@ var {
   AppRegistry
 } = React
 
-var AwsomeProject = React.createClass({
-  render: function() {
+var tab = React.createClass({
+  render() {
     return (
       <Tab
         curClass={styles.curTab}
@@ -83,6 +84,47 @@ var AwsomeProject = React.createClass({
   }
 })
 
+var AwsomeProject = React.createClass({
+  render() {
+    return (
+      <Dropdown
+        selected="1"
+        onChange={function(curIndex,curValue){
+          console.log(curIndex,curValue)
+        }}
+        style={{backgroundColor: '#ffffff',marginTop: 200,padding: 5,borderColor: '#cccccc',borderWidth: 1}}
+        wrapperStyle={{borderColor: '#cccccc',borderWidth: 1,marginTop: -1}}
+        selectedStyle={{backgroundColor: '#E0F6FF'}}
+      >
+        <View
+          style={style.option}
+          value="1"
+        >
+          <Text>
+            1
+          </Text>
+        </View>
+        <View
+          style={style.option}
+          value="2"
+        >
+          <Text>
+            2
+          </Text>
+        </View>
+        <View
+          style={style.option}
+          value="3"
+        >
+          <Text>
+            3
+          </Text>
+        </View>
+      </Dropdown>
+    )
+  }
+})
+
 
 var styles = StyleSheet.create({
   curTab: {
@@ -108,7 +150,8 @@ var styles = StyleSheet.create({
     lineHeight: 28,
     height: 40,
     fontWeight: 'bold'
-  }
+  },
+  option: {backgroundColor: '#ffffff',padding: 5}
 })
 
 AppRegistry.registerComponent('AwsomeProject',function(){
